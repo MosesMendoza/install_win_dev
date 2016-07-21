@@ -181,3 +181,25 @@ $rubyList | Sort-Object -Property choco_version | % {
 
 }
 
+
+# Install other apps
+Write-Output "Installing vim..."
+choco install vim
+
+Write-Output "Installing conemu..."
+choco install conemu
+
+Write-Output "Installing pry..."
+uru 2.1.8-x64
+gem install pry
+
+Write-Output "Installing powershell update (with psreadline)"
+choco install powershell
+
+if (test-path .\Microsoft.PowerShell_profile.ps1) {
+  Write-Output "Installing powershell profile"
+  New-Item -path $profile -type file -force
+  cp .\Microsoft.Powershell_profile.ps1 $profile
+}
+
+
