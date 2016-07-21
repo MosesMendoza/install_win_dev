@@ -40,9 +40,16 @@ $rubyList = (@"
 ]
 "@ | ConvertFrom-JSON -ErrorAction Stop)
 
+if (get-command choco){
+  Write-Output "Upgrading chocolately..."
 # Prep
-choco upgrade chocolatey -pre -y
-choco feature enable -n=allowGlobalConfirmation -y
+  choco upgrade chocolatey -pre -y
+  choco feature enable -n=allowGlobalConfirmation -y
+}
+else {
+  Write-Output "Installing chocolatey..."
+  iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+}
 
 choco install 7zip.commandline -y
 
