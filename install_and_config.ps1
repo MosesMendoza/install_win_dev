@@ -2,6 +2,8 @@
 # You must be on the latest beta of chocolatey for this to work properly (redownload files)
 # Based on https://gist.github.com/ferventcoder/947479688d930e28d632
 
+# Based on (credit to) https://gist.github.com/glennsarti/02b522d218d19f96d6b6f38d786786f8
+
 $originalPath = $env:PATH
 
 $rubyList = (@"
@@ -199,6 +201,9 @@ choco install conemu
 Write-Output "Installing pry..."
 uru 2.1.8-x64
 gem install pry
+
+Write-Output "Installing ack..."
+choco install ack
 
 Write-Output "Installing powershell update (with psreadline)"
 choco install powershell
